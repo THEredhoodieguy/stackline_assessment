@@ -19,6 +19,7 @@ header {
     padding-bottom: 20px;
     & img {
         max-height: 50px;
+        max-width: 150px;
     }
 }
 

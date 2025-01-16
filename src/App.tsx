@@ -1,34 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import type { ProductEntry } from './types';
 import { productPanel } from './components/productPanel';
 import { salesGraph } from './components/salesGraph';
 import { salesTable } from './components/salesTable';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from './store';
+import { fetchProducts } from './dataSlice';
+import { Card, Typography } from '@mui/material';
 
 const App: React.FC = () => {
-  const [data, setData] = useState<ProductEntry>();
+  const dispatch = useDispatch<AppDispatch>();
+  const { products, status, error} = useSelector((state: RootState) => state.data);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('./data.json');
-        const json: ProductEntry[] = await response.json();
-        setData(json[0]);
-      } catch (error) {
-        console.error('Error fetching mock data: ', error);
-      }
-    };
+    if (status === 'idle') {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch]);
 
-    fetchData();
-  }, [])
+  if (status === 'loading') {
+    return <Card><Typography>Loading...</Typography></Card>
+  }
+
+  if (status === 'failed') {
+    return <Card><Typography>Error: {error}</Typography></Card>
+  }
 
   return (
     <div style={{margin: 0, padding: 0}}>
       <header ><img src='./stackline_logo.svg' /></header>
       <div className="container">
-        <div className="left-pane">{data && productPanel(data)}</div>
+        <div className="left-pane">{products && products[0] && productPanel(products[0])}</div>
         <div className="right-pane">
-          <div className='graph-panel'>{data && salesGraph(data.sales)}</div>
-          <div className='table-panel'>{data && salesTable(data.sales)}</div>
+          <div className='graph-panel'>{products && products[0] && salesGraph(products[0].sales)}</div>
+          <div className='table-panel'>{products && products[0] && salesTable(products[0].sales)}</div>
         </div>
       </div>
     </div>
