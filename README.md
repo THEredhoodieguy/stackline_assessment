@@ -32,6 +32,7 @@ I added some NPM published libraries to build this app, here they are in no part
 * react
 * react-dom
 * react-redux
+* recharts - The first charting library I found that would support the given date format
 * @types/react
 * @types/react-dom
 * typescript
