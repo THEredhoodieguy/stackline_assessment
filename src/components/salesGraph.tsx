@@ -1,5 +1,6 @@
 import { Line, LineChart, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import { SalesEntry } from "../types";
+import { Card } from "@mui/material";
 
 const months = [
   "January", "February", "March", "April", "May", "June",
@@ -8,7 +9,8 @@ const months = [
 
 export function salesGraph(entries: SalesEntry[]) {
   return (
-    <ResponsiveContainer width="100%" height={300}>
+    <Card sx={{width: '100%', height: 300}}>
+      <ResponsiveContainer width="100%" height={300}>
       <LineChart data={entries} 
       // width={1000} height={300}
       >
@@ -25,5 +27,7 @@ export function salesGraph(entries: SalesEntry[]) {
         <Line type="monotone" dataKey="wholesaleSales" stroke="#3c4858" />
       </LineChart>
     </ResponsiveContainer>
+    </Card>
+    
   )
 }

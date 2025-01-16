@@ -44,7 +44,6 @@ header {
 .graph-panel {
     flex: 1;
     background-color: #fefffe;
-    padding: 16px;
     display: flex;
     justify-content: center;
     align-items: center;
