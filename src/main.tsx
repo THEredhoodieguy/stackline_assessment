@@ -1,9 +1,13 @@
 import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom/client'; // For React 18+
-import App from './App'; // Import the main App component
-import './index.css'; // Optional: Global styles (if you have any)
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
 
-// Create a root element and render the App component
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 
 root.render(
