@@ -30,7 +30,7 @@ header {
 
 .left-pane {
     width: 25%;
-    height: 65vh;
+    height: 100vh;
     justify-content: center;
     align-items: center;
 }
