@@ -8,7 +8,6 @@ export function productPanel(product: ProductEntry) {
   return (
     <Card variant='outlined' sx={{maxWidth: 345, height: '100%', marginLeft: '10px'}}>
       <CardMedia component='img' src={product.image} />
-      {/* <CardContent> */}
       <Box sx={{padding: '10px'}}>
         <Typography variant='h5' align='center'>{product.title}</Typography>
         <Typography variant='caption' color='textSecondary' align='center'>{product.subtitle}</Typography>
@@ -19,15 +18,12 @@ export function productPanel(product: ProductEntry) {
         <Divider variant='fullWidth'/>
         <Grid2 container spacing={1} sx={{margin: '10px'}}>
           {product.tags.map((tag) => (
-            <Chip label={tag} variant='outlined' 
-            // sx={{marginLeft: 0.25, marginRight: 0.25}}
-            />
+            <Chip label={tag} variant='outlined' />
           ))}
         </Grid2>
         <Divider variant='fullWidth'/>
         </div>
       )}
-      {/* </CardContent> */}
     </Card>
   );
 }
